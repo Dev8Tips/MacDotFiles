@@ -14,7 +14,10 @@ export ZSH=$HOME/.dotfiles/oh-my-zsh
 #export ZSH_THEME="fino"
 #export ZSH_THEME="takashiyoshida"
 #export ZSH_THEME="random"
-export ZSH_THEME="jnrowe"
+#export ZSH_THEME="jnrowe"
+#export ZSH_THEME="half-life"
+export ZSH_THEME="inception"
+
 
 # Set to this to use case-sensitive completion
 export CASE_SENSITIVE="true"
