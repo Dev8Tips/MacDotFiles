@@ -2,7 +2,7 @@
 # Shell agnostic path setup
 ########################################################################
 
-# Matthew's Scripts
+# Shifath's Scripts
 export PATH=$PATH:.
 export PATH=$PATH:~/bin
 export PATH=$PATH:~/.dotfiles/scripts
@@ -48,4 +48,3 @@ PATH=$PATH:/Applications/Dev/jgit
 
 # Node JS Packages (from Brew Install of Node and NPM)
 PATH=$PATH:/usr/local/share/npm/bin
-

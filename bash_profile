@@ -20,7 +20,7 @@ shopt -s histappend
 # Keep multiline commands as one command in history
 shopt -s cmdhist
 
-# Load Matthew's Git bash prompt
+# Load Shifath's Git bash prompt
 # source ~/.dotfiles/bash_gitprompt
 
 # Load Brew's git bash completion
@@ -28,3 +28,6 @@ shopt -s cmdhist
 # source /opt/boxen/homebrew/Cellar/git/1.9.1/etc/bash_completion.d/git-prompt.sh
 # PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
 # GIT_PS1_SHOWDIRTYSTATE=true
+
+# Use Homebrew Ruby
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
