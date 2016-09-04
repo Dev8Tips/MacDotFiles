@@ -1,0 +1,23 @@
+# JAVA
+export JAVA_HOME="$(/usr/libexec/java_home)"
+#export JAVA_HOME="`/usr/libexec/java_home -v 1.8`"
+#
+# PYTHON
+export PYTHONSTARTUP=$HOME/.pythonrc.py
+export PATH="/usr/local/share/python:$PATH"
+
+# RUBY
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+#
+# HADOOP
+export HADOOP_HOME=/usr/local/Cellar/hadoop/2.7.2
+export HADOOP_CONF_DIR=/usr/local/Cellar/hadoop/2.7.2/libexec/etc/hadoop
+#
+# SPARK
+export SPARK_HOME=/usr/local/Cellar/apache-spark/1.6.1/libexec
+export PYTHONPATH=$SPARK_HOME/python:$SPARK_HOME/python/build:$SPARK_HOME/python/lib/py4j-0.9-src.zip:$PYTHONPATH
+#
+# HIVE
+export HIVE_HOME=/usr/local/Cellar/hive/1.2.1/libexec
+export HCAT_HOME=/usr/local/Cellar/hive/1.2.1/libexec/hcatalog
+#

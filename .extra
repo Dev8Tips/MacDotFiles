@@ -1,0 +1,11 @@
+# IPython Notebook
+alias ipy='jupyter qtconsole --ConsoleWidget.font_family="Consolas" --ConsoleWidget.font_size=13'
+
+# Pip, Virtualenv
+source /usr/local/bin/virtualenvwrapper.sh
+
+# Ruby
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+# API
+export opencellid_api_key=dcb401ac-d363-4255-8502-63e0cb0074bc
