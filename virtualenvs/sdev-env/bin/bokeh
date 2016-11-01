@@ -1,0 +1,7 @@
+#!/Users/Neo/.virtualenvs/sdev-env/bin/python2.7
+
+import sys
+
+from bokeh.command.bootstrap import main
+
+main(sys.argv)

@@ -23,6 +23,7 @@ export JAVA_HOME=/Library/Java/Home
 #export EC2_HOME=/Applications/Dev/ec2-api-tools-1.3-46266
 #export GRADLE_HOME=/Applications/Dev/gradle
 #export GRAILS_HOME=/Applications/Dev/grails
+export WORKON_HOME=~/.virtualenvs
 
 #########################################################################
 # Tool settings

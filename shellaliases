@@ -9,7 +9,7 @@
 alias run.clojure.repl='java -cp ${CLOJURE_HOME}/clojure.jar clojure.lang.Repl'
 alias run.jlineclojure.repl='java -cp ${CLOJURE_HOME}/jline-0.9.91.jar:${CLOJURE_HOME}/clojure.jar jline.ConsoleRunner clojure.lang.Repl'
 alias run.clojure.script='java -cp ${CLOJURE_HOME}/clojure.jar clojure.main'
-
+alias run.pydev="source ~/.virtualenv/"
 
 #########################################
 # Commands to change dirs
