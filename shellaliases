@@ -13,8 +13,7 @@ alias run.pydev="source ~/.virtualenv/"
 
 #########################################
 # Commands to change dirs
-alias to.devhome='cd ~/Projects/Work/Development.Portfolio'
-alias to.githome='cd ~/Projects/Work/Development.Portfolio/Git.Repositories'
+alias to.code='cd ${MYCODE}'
 alias to.dotfiles='cd ~/.dotfiles'
 alias to.temp='cd ${MYTEMP}'
 alias to.downloads='cd ${MYDOWNLOADS}'
@@ -23,7 +22,6 @@ alias to.desktop='cd ~/Desktop'
 alias to.process='cd ${MYPROCESS}'
 alias to.docs='cd ${MYDOCUMENTS}'
 alias to.clients='cd ~/Documents/AI-Clients-Matthew'
-alias to.code='cd ${MYCODE}'
 alias to.dosug='cd ~/Documents/AI-Clients-Matthew/DOSUG'
 alias to.scratch='cd ${MYSCRATCH}'
 alias to.teach='cd ${MYTEACH}'

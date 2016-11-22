@@ -10,7 +10,7 @@ export MYPROCESS=~/Dropbox/Temp-Process
 export MYDOWNLOADS=~/Downloads
 export MYDOCUMENTS=~/Documents
 export MYTEACH=~/Documents/Teach
-export MYCOURSES=~/Documents/Teach/Courses
+export MYCOURSES=~/Documents/Courses
 export MYDEVAPPS=/Applications/Dev
 
 #########################################################################
