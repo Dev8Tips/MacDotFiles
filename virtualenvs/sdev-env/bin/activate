@@ -1,78 +1,92 @@
-# This file must be used with "source bin/activate" *from bash*
-# you cannot run it directly
+#!/bin/bash
 
-deactivate () {
-    unset -f pydoc >/dev/null 2>&1
+# Ensure that this script is sourced, not executed
+# Also note that errors are ignored as `activate foo` doesn't generate a bad
+# value for $0 which would cause errors.
+if [[ -n $BASH_VERSION ]] && [[ "$(basename "$0" 2> /dev/null)" == "activate" ]]; then
+    >&2 echo "Error: activate must be sourced. Run 'source activate envname'
+instead of 'activate envname'.
+"
+    "$(dirname "$0")/conda" ..activate -h
+    exit 1
+fi
 
-    # reset old environment variables
-    # ! [ -z ${VAR+_} ] returns true if VAR is declared at all
-    if ! [ -z "${_OLD_VIRTUAL_PATH+_}" ] ; then
-        PATH="$_OLD_VIRTUAL_PATH"
-        export PATH
-        unset _OLD_VIRTUAL_PATH
-    fi
-    if ! [ -z "${_OLD_VIRTUAL_PYTHONHOME+_}" ] ; then
-        PYTHONHOME="$_OLD_VIRTUAL_PYTHONHOME"
-        export PYTHONHOME
-        unset _OLD_VIRTUAL_PYTHONHOME
-    fi
+# Determine the directory containing this script
+if [[ -n $BASH_VERSION ]]; then
+    _SCRIPT_LOCATION=${BASH_SOURCE[0]}
+elif [[ -n $ZSH_VERSION ]]; then
+    _SCRIPT_LOCATION=${funcstack[1]}
+else
+    echo "Only bash and zsh are supported"
+    return 1
+fi
 
-    # This should detect bash and zsh, which have a hash command that must
-    # be called to get it to forget past commands.  Without forgetting
-    # past commands the $PATH changes we made may not be respected
-    if [ -n "${BASH-}" ] || [ -n "${ZSH_VERSION-}" ] ; then
-        hash -r 2>/dev/null
-    fi
+_THIS_DIR=$(dirname "$_SCRIPT_LOCATION")
 
-    if ! [ -z "${_OLD_VIRTUAL_PS1+_}" ] ; then
-        PS1="$_OLD_VIRTUAL_PS1"
-        export PS1
-        unset _OLD_VIRTUAL_PS1
-    fi
+# Load common functions
+get_dirname() {
+    echo "$(cd "$(dirname "$1")" && pwd)"
+}
 
-    unset VIRTUAL_ENV
-    if [ ! "${1-}" = "nondestructive" ] ; then
-    # Self destruct!
-        unset -f deactivate
+run_scripts() {
+    _PREFIX="$(echo $(echo $PATH | awk -F ':' '{print $1}')/..)"
+    _CONDA_D="${_PREFIX}/etc/conda/$1.d"
+    if [[ -d $_CONDA_D ]]; then
+        for f in $(find $_CONDA_D -name "*.sh"); do source $f; done
     fi
 }
 
-# unset irrelevant variables
-deactivate nondestructive
+# http://stackoverflow.com/a/21188136/161801
+get_abs_filename() {
+    echo "$(get_dirname "$1")/$(basename "$1")"
+}
 
-VIRTUAL_ENV="/Users/Neo/.virtualenvs/sdev-env"
-export VIRTUAL_ENV
+if "$_THIS_DIR/conda" ..checkenv "$@"; then
+    # Ensure we deactivate any scripts from the old env
+    run_scripts "deactivate"
 
-_OLD_VIRTUAL_PATH="$PATH"
-PATH="$VIRTUAL_ENV/bin:$PATH"
-export PATH
-
-# unset PYTHONHOME if set
-if ! [ -z "${PYTHONHOME+_}" ] ; then
-    _OLD_VIRTUAL_PYTHONHOME="$PYTHONHOME"
-    unset PYTHONHOME
+    _NEW_PATH=$("$_THIS_DIR/conda" ..deactivate)
+    export PATH=$_NEW_PATH
+    if (( $("$_THIS_DIR/conda" ..changeps1) )); then
+        if [[ -n $CONDA_OLD_PS1 ]]; then
+            PS1=$CONDA_OLD_PS1
+            unset CONDA_OLD_PS1
+        fi
+    fi
+else
+    return 1
 fi
 
-if [ -z "${VIRTUAL_ENV_DISABLE_PROMPT-}" ] ; then
-    _OLD_VIRTUAL_PS1="$PS1"
-    if [ "x" != x ] ; then
-        PS1="$PS1"
+_NEW_PATH=$("$_THIS_DIR/conda" ..activate "$@")
+if (( $? == 0 )); then
+    export PATH=$_NEW_PATH
+    # If the string contains / it's a path
+    if [[ "$@" == */* ]]; then
+        export CONDA_DEFAULT_ENV=$(get_abs_filename "$@")
     else
-        PS1="(`basename \"$VIRTUAL_ENV\"`) $PS1"
+        export CONDA_DEFAULT_ENV="$@"
     fi
-    export PS1
+
+    # Get first path and convert it to absolute
+    ENV_BIN_DIR="$(echo $(echo $PATH | awk -F ':' '{print $1}'))"
+    export CONDA_ENV_PATH="$(get_dirname "$ENV_BIN_DIR")"
+
+    if (( $("$_THIS_DIR/conda" ..changeps1) ));  then
+            CONDA_OLD_PS1="$PS1"
+            PS1="($CONDA_DEFAULT_ENV)$PS1"
+    fi
+else
+    return $?
 fi
 
-# Make sure to unalias pydoc if it's already there
-alias pydoc 2>/dev/null >/dev/null && unalias pydoc
+# Load any of the scripts found $PREFIX/etc/conda/activate.d
+run_scripts "activate"
 
-pydoc () {
-    python -m pydoc "$@"
-}
-
-# This should detect bash and zsh, which have a hash command that must
-# be called to get it to forget past commands.  Without forgetting
-# past commands the $PATH changes we made may not be respected
-if [ -n "${BASH-}" ] || [ -n "${ZSH_VERSION-}" ] ; then
-    hash -r 2>/dev/null
+if [[ -n $BASH_VERSION ]]; then
+    hash -r
+elif [[ -n $ZSH_VERSION ]]; then
+    rehash
+else
+    echo "Only bash and zsh are supported"
+    return 1
 fi
