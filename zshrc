@@ -16,7 +16,9 @@ export ZSH=$HOME/.dotfiles/oh-my-zsh
 #export ZSH_THEME="random"
 #export ZSH_THEME="jnrowe"
 #export ZSH_THEME="half-life"
-export ZSH_THEME="inception"
+#export ZSH_THEME="inception"
+export ZSH_THEME="pygmalion"
+
 
 
 # Set to this to use case-sensitive completion
@@ -32,7 +34,7 @@ export CASE_SENSITIVE="true"
 # export DISABLE_AUTO_TITLE="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.dotfiles/oh-my-zsh/plugins/*)
-plugins=(git battery brew osx gradle ant compleat dirpersist gem ssh-agent cloudapp ruby textmate sublime)
+plugins=(git colored-man colorize github jira vagrant virtualenv pip python brew osx zsh-syntax-highlighting battery gradle ant compleat dirpersist gem ssh-agent cloudapp ruby textmate sublime)
 
 source $ZSH/oh-my-zsh.sh
 
