@@ -11,6 +11,9 @@ alias run.jlineclojure.repl='java -cp ${CLOJURE_HOME}/jline-0.9.91.jar:${CLOJURE
 alias run.clojure.script='java -cp ${CLOJURE_HOME}/clojure.jar clojure.main'
 alias run.pydev="source ~/.virtualenv/"
 
+alias typora="open -a typora"
+
+
 #########################################
 # Commands to change dirs
 alias to.code='cd ${MYCODE}'

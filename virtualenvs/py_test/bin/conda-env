@@ -1,0 +1,5 @@
+#!/Users/Neo/.dotfiles/virtualenvs/py_test/bin/python2.7
+import sys
+from conda_env.cli.main import main
+
+sys.exit(main())
