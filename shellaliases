@@ -12,7 +12,7 @@ alias run.clojure.script='java -cp ${CLOJURE_HOME}/clojure.jar clojure.main'
 alias run.pydev="source ~/.virtualenv/"
 
 alias typora="open -a typora"
-
+alias bbedit="open -a bbedit"
 
 #########################################
 # Commands to change dirs
