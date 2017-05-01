@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# ScratchPad Session
+function work.scratch() {
+	bbedit "/Users/Neo/Documents/Scratch"
+}
+
 # Productivity Sessions
 function work.ppap() {
     open "http://presentationpatterns.com"
