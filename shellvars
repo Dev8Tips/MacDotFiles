@@ -26,6 +26,18 @@ export JAVA_HOME=/Library/Java/Home
 export WORKON_HOME=~/.virtualenvs
 
 #########################################################################
+# Big Data Libs Paths
+#########################################################################
+export HADOOP_HOME=""
+export HIVE_HOME=""
+export SPARK_HOME=""
+export KAFKA_HOME=""
+
+
+
+
+
+#########################################################################
 # Tool settings
 #########################################################################
 #export GRADLE_OPTS="-Dorg.gradle.daemon=true"
