@@ -1,6 +1,0 @@
-#!/Users/Neo/.dotfiles/virtualenvs/kafka_python/bin/python2.7
-
-from pyleus.cli.cli import main
-
-if __name__ == '__main__':
-    main()

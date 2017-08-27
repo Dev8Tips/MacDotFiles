@@ -43,8 +43,6 @@ function work.gittraining() {
     open "~/Documents/Code/GitHub/teach.github.com"
 }
 
-# Python virtualenvwrapper 
-source /usr/local/bin/virtualenvwrapper.sh
 
 function fixbluetooth() {
   sudo killall coreaudiod
@@ -60,4 +58,26 @@ function fixbluetooth() {
   defaults write com.apple.BluetoothAudioAgent "Negotiated Bitpool Min" 80
   sudo renice -5 (pid coreaudiod)
   sudo renice -5 (pid blued)
+}
+
+function setup.python2() {
+ export PATH=/usr/local/share/python:$PATH
+ export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
+ export WORKON_HOME=/Users/Neo/Developer/Environment/pyvirtualenvs/python2
+ export PIP_VIRTUALENV_BASE=$WORKON_HOME
+ export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2
+ export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
+ export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
+ source /usr/local/bin/virtualenvwrapper.sh
+}
+
+function setup.python3() {
+ export PATH=/usr/local/share/python:$PATH
+ export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
+ export WORKON_HOME=/Users/Neo/Developer/Environment/pyvirtualenvs/python3
+ export PIP_VIRTUALENV_BASE=$WORKON_HOME
+ export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+ export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
+ export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
+ source /usr/local/bin/virtualenvwrapper.sh
 }
